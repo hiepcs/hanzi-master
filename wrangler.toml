@@ -1,0 +1,10 @@
+name = "hanzi-master"
+main = "src/worker.js"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = "dist"
+
+[[routes]]
+pattern = "hanzi.hiepbp.com"
+custom_domain = true
