@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { extractHanzi } from '../util/hanzi';
 
-export function useVoices() {
+export function useVoices(speechRate = 0.8) {
   const [voices, setVoices] = useState([]);
   const [selectedVoiceURI, setSelectedVoiceURI] = useState('');
 
@@ -28,14 +28,14 @@ export function useVoices() {
       if (!hanzi) return;
       const u = new SpeechSynthesisUtterance(hanzi);
       u.lang = 'zh-CN';
-      u.rate = 0.8;
+      u.rate = speechRate;
       if (selectedVoiceURI) {
         const v = voices.find((v) => v.voiceURI === selectedVoiceURI);
         if (v) u.voice = v;
       }
       synth.speak(u);
     },
-    [voices, selectedVoiceURI],
+    [voices, selectedVoiceURI, speechRate],
   );
 
   return { voices, selectedVoiceURI, setSelectedVoiceURI, speak };

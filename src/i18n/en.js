@@ -56,4 +56,8 @@ export default {
   // Voice
   'voice.label': 'Voice (Male/Female)',
   'voice.hint': 'This list comes directly from your device\'s operating system.',
+
+  // Settings
+  'settings.title': 'Settings',
+  'settings.speechRate': 'Speech Rate',
 };

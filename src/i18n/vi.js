@@ -56,4 +56,8 @@ export default {
   // Voice
   'voice.label': 'Giọng đọc (Nam/Nữ)',
   'voice.hint': 'Danh sách này lấy trực tiếp từ hệ điều hành thiết bị của bạn.',
+
+  // Settings
+  'settings.title': 'Cài đặt',
+  'settings.speechRate': 'Tốc độ đọc',
 };
