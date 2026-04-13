@@ -1,4 +1,4 @@
-import { Layout, Layers, PlayCircle, Languages, BookOpen } from 'lucide-react';
+import { Layout, Layers, PlayCircle, Languages, BookOpen, Settings } from 'lucide-react';
 import { useI18n } from '../i18n/I18nContext';
 
 const MODES = [
@@ -8,7 +8,7 @@ const MODES = [
   { id: 'template', icon: Layers, key: 'nav.template' },
 ];
 
-export default function Header({ viewMode, onChangeMode }) {
+export default function Header({ viewMode, onChangeMode, onOpenSettings }) {
   const { lang, setLang, t } = useI18n();
 
   return (
@@ -34,12 +34,21 @@ export default function Header({ viewMode, onChangeMode }) {
           </button>
         ))}
       </div>
-      <button
-        onClick={() => setLang(lang === 'vi' ? 'en' : 'vi')}
-        className="px-3 py-2 rounded-xl text-xs font-black border border-slate-200 bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 transition-colors uppercase tracking-wider"
-      >
-        {lang === 'vi' ? 'EN' : 'VI'}
-      </button>
+      <div className="flex items-center gap-2">
+        <button
+          onClick={onOpenSettings}
+          className="p-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 transition-colors"
+          title={t('settings.title')}
+        >
+          <Settings size={18} className="text-slate-500" />
+        </button>
+        <button
+          onClick={() => setLang(lang === 'vi' ? 'en' : 'vi')}
+          className="px-3 py-2 rounded-xl text-xs font-black border border-slate-200 bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 transition-colors uppercase tracking-wider"
+        >
+          {lang === 'vi' ? 'EN' : 'VI'}
+        </button>
+      </div>
     </header>
   );
 }

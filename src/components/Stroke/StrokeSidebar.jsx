@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Settings, FastForward, ChevronDown, ChevronUp } from 'lucide-react';
-import VoiceSelector from '../shared/VoiceSelector';
 import { useI18n } from '../../i18n/I18nContext';
 
-export default function StrokeSidebar({ data, onChange, voices, selectedVoiceURI, onSelectVoice }) {
+export default function StrokeSidebar({ data, onChange }) {
   const { t } = useI18n();
   const [showSettings, setShowSettings] = useState(false);
   const set = (patch) => onChange({ ...data, ...patch });
@@ -25,7 +24,6 @@ export default function StrokeSidebar({ data, onChange, voices, selectedVoiceURI
         </button>
         {showSettings && (
           <div className="pt-5 space-y-6 animate-in slide-in-from-top-2 fade-in duration-200">
-            <VoiceSelector voices={voices} selectedVoiceURI={selectedVoiceURI} onSelect={onSelectVoice} />
             <div>
               <div className="flex justify-between text-sm mb-2">
                 <span className="font-bold text-slate-700 flex items-center gap-2"><FastForward size={14} /> {t('stroke.speed')}</span>

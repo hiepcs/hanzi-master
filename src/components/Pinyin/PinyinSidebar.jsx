@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Settings, Copy, Check, ChevronDown, ChevronUp } from 'lucide-react';
-import VoiceSelector from '../shared/VoiceSelector';
 import { useI18n } from '../../i18n/I18nContext';
 
-export default function PinyinSidebar({ data, onChange, pinyinResult, voices, selectedVoiceURI, onSelectVoice }) {
+export default function PinyinSidebar({ data, onChange, pinyinResult }) {
   const { t } = useI18n();
   const [showSettings, setShowSettings] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -44,8 +43,7 @@ export default function PinyinSidebar({ data, onChange, pinyinResult, voices, se
         </button>
         {showSettings && (
           <div className="pt-5 space-y-4 animate-in slide-in-from-top-2 fade-in duration-200">
-            <VoiceSelector voices={voices} selectedVoiceURI={selectedVoiceURI} onSelect={onSelectVoice} />
-            <div className="grid grid-cols-2 gap-2 mb-2 pt-2 border-t border-slate-100">
+            <div className="grid grid-cols-2 gap-2 mb-2">
               <button onClick={() => set({ toneType: 'symbol' })} className={`py-2.5 text-[10px] uppercase font-black rounded-xl border transition-all ${data.toneType === 'symbol' ? 'bg-indigo-600 border-indigo-600 text-white shadow-md' : 'bg-slate-50 border-slate-200 text-slate-400'}`}>{t('pinyin.toneSymbol')}</button>
               <button onClick={() => set({ toneType: 'num' })} className={`py-2.5 text-[10px] uppercase font-black rounded-xl border transition-all ${data.toneType === 'num' ? 'bg-indigo-600 border-indigo-600 text-white shadow-md' : 'bg-slate-50 border-slate-200 text-slate-400'}`}>{t('pinyin.toneNum')}</button>
             </div>
